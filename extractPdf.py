@@ -4,15 +4,15 @@ import json
 from sqlalchemy import values
 
 parser = LlamaParse(
-    api_key="llx-gOez8nY6tPiauNFiQOwA9cLm1yjGIaIUw4EWzty3dLmkpz5q",  # can also be set in your env as LLAMA_CLOUD_API_KEY
+    api_key="llx-********************",  # can also be set in your env as LLAMA_CLOUD_API_KEY
     num_workers=4,       # if multiple files passed, split in `num_workers` API calls
     verbose=True,
     language="en",
 )
 
-result = parser.parse("C:\\Personal\\Girish\study\\aws-chatbot-poc\\testfiles\\cosentyx.pdf")
+result = parser.parse("./files/cosentyx.pdf")
 records = []
-# this does not work when there are multiple heading lines one after another
+# this uses only the last heading line when multiple heading lines are present one after another
 for page in result.pages :
     count = len(page.items)
     for i in range(len(page.items)):
